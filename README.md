@@ -1,8 +1,7 @@
-Javascript JDate Class ;)
-=====
+# Javascript JDate Class ;)
 
-new JDate()
-------
+## new JDate()
+
 new JDate() creates a new jalali date object with the current date and time:
 
     var jd = new JDate();
@@ -10,8 +9,8 @@ new JDate() creates a new jalali date object with the current date and time:
     
     ~~>    چهارشنبه، 14 اسفند 1398 ساعت 01:43:03
     
-new JDate(year, month, ...)
------
+## new JDate(year, month, ...)
+
 new JDate(year, month, ...) creates a new jalali date object with a specified date and time.
 7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):
 
@@ -20,8 +19,7 @@ new JDate(year, month, ...) creates a new jalali date object with a specified da
     
     ~~>     جمعه، 13 اردیبهشت 1398 ساعت 10:33:30
 
-new JDate(...).echo
------
+## new JDate(...).echo
 
     var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
     document.getElementById("example-5").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
@@ -29,3 +27,6 @@ new JDate(...).echo
     ~~>     جمعه، 13 اردیبهشت 1398 ساعت 10:33:30
 
 
+## License
+
+JDate.js is available under the [MIT license](https://opensource.org/licenses/MIT).

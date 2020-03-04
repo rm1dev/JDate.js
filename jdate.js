@@ -4,7 +4,7 @@
  * @version 1.0.0
  * @author Reza Moghaddam
  * @copyright The Financial Times Limited [All Rights Reserved]
- * @license MIT License (see LICENSE.txt)
+ * @license MIT License https://opensource.org/licenses/MIT
  */
 
 function JDate(year, month, date, hours, minutes, seconds, milliseconds) {
