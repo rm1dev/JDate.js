@@ -21,7 +21,7 @@
     <meta name="msapplication-config" content="https://getbootstrap.com/docs/4.4/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
 
-    <script src="../jdate.min.js"></script>
+    <script src="../jdate.js"></script>
 
     <style>
         .bd-placeholder-img {
@@ -81,27 +81,16 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="https://getbootstrap.com#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://getbootstrap.com#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="https://getbootstrap.com#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="https://getbootstrap.com#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle" href="https://getbootstrap.com#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="https://getbootstrap.com#">Action</a>
-                    <a class="dropdown-item" href="https://getbootstrap.com#">Another action</a>
-                    <a class="dropdown-item" href="https://getbootstrap.com#">Something else here</a>
+                    <a class="dropdown-item" href="#">English</a>
+                    <a class="dropdown-item" href="#">Persian</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>
 
@@ -162,28 +151,83 @@
             <div class="col-md-6">
                 <pre>
                     <code class="language-js">
-                        var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
-                        document.getElementById("example-3").innerHTML = jd;
+                        new JDate()
+                        new JDate(2019)
+                        new JDate(2019, 4)
+                        new JDate(2019, 4, 3)
+                        new JDate(2019, 4, 3, 10)
+                        new JDate(2019, 4, 3, 10, 33)
+                        new JDate(2019, 4, 3, 10, 33, 30)
                     </code>
                 </pre>
                 <div id="example-3" class="example-result"></div>
                 <script>
-                    var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
-                    document.getElementById("example-3").innerHTML = jd;
+                    document.getElementById("example-3").innerHTML += new JDate() + "<br>";
+                    document.getElementById("example-3").innerHTML += new JDate(2019) + "<br>";
+                    document.getElementById("example-3").innerHTML += new JDate(2019, 4) + "<br>";
+                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3) + "<br>";
+                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3, 10) + "<br>";
+                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3, 10, 33) + "<br>";
+                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3, 10, 33, 30) + "<br>";
                 </script>
             </div>
 
             <div class="col-md-6">
                 <pre>
                     <code class="language-js">
-                        var gd = new Date(2019, 4, 3, 10, 33, 30, 0);
-                        document.getElementById("example-4").innerHTML = gd;
+                        new Date()
+                        new Date(2019)
+                        new Date(2019, 4)
+                        new Date(2019, 4, 3)
+                        new Date(2019, 4, 3, 10)
+                        new Date(2019, 4, 3, 10, 33)
+                        new Date(2019, 4, 3, 10, 33, 30)
                     </code>
                 </pre>
                 <div id="example-4" class="example-result"></div>
                 <script>
-                    var gd = new Date(2019, 4, 3, 10, 33, 30, 0);
-                    document.getElementById("example-4").innerHTML = gd;
+                    document.getElementById("example-4").innerHTML += new Date() + "<br>";
+                    document.getElementById("example-4").innerHTML += new Date(2019) + "<br>";
+                    document.getElementById("example-4").innerHTML += new Date(2019, 4) + "<br>";
+                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3) + "<br>";
+                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3, 10) + "<br>";
+                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3, 10, 33) + "<br>";
+                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3, 10, 33, 30) + "<br>";
+                </script>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>new JDate(year, month, ...) with shamsi date parameters</h2>
+                <p>You can creates a new jalali date object with a <strong>specified shamsi date and time</strong>.</p>
+            </div>
+
+            <div class="col-md-6">
+                <pre>
+                    <code class="language-js">
+                        new JDate()
+                        new JDate(1398)
+                        new JDate(1398, 1)
+                        new JDate(1398, 1, 13)
+                        new JDate(1398, 1, 13, 3)
+                        new JDate(1398, 1, 13, 3, 14)
+                        new JDate(1398, 1, 13, 3, 14, 30)
+                    </code>
+                </pre>
+            </div>
+            <div class="col-md-6">
+                <div id="example-5" class="example-result"></div>
+                <script>
+                    document.getElementById("example-5").innerHTML += new JDate() + "<br>";
+                    document.getElementById("example-5").innerHTML += new JDate(1398) + "<br>";
+                    document.getElementById("example-5").innerHTML += new JDate(1398, 1) + "<br>";
+                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13) + "<br>";
+                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13, 3) + "<br>";
+                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13, 3, 14) + "<br>";
+                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13, 3, 14, 30) + "<br>";
                 </script>
             </div>
         </div>
@@ -202,10 +246,10 @@
                         document.getElementById("example-5").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
                     </code>
                 </pre>
-                <div id="example-5" class="example-result" style="direction: rtl; text-align: right"></div>
+                <div id="example-6" class="example-result" style="direction: rtl; text-align: right"></div>
                 <script>
                     var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
-                    document.getElementById("example-5").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
+                    document.getElementById("example-6").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
                 </script>
             </div>
 
@@ -220,34 +264,130 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr><td>a</td><td>زمان به صورت خلاصه</td><td>ق.ظ - ب.ظ</td><td>ق.ظ</td></tr>
-                    <tr><td>b</td><td>شماره فصل</td><td>0-3</td><td>1</td></tr>
-                    <tr><td>d</td><td>روز - ۲ رقمی</td><td>01-31</td><td>13</td></tr>
-                    <tr><td>f</td><td>نام فصل با حروف فارسی</td><td>بهار-زمستان</td><td>بهار</td></tr>
-                    <tr><td>g</td><td>ساعت به صورت ۱۲ ساعته - عدد صحیح</td><td>0-12</td><td>11</td></tr>
-                    <tr><td>h</td><td>ساعت به صورت ۱۲ ساعته - دو رقمی</td><td>00-12</td><td>03</td></tr>
-                    <tr><td>i</td><td>دقیقه - دو رقمی</td><td>00-59</td><td>13</td></tr>
-                    <tr><td>j</td><td>روز - عدد صحیح</td><td>1-31</td><td>4</td></tr>
-                    <tr><td>l</td><td>روز هفته - کامل</td><td>شنبه-جمعه</td><td>یکشنبه</td></tr>
-                    <tr><td>m</td><td>ماه - دو رقمی</td><td>01-12</td><td>02</td></tr>
-                    <tr><td>n</td><td>ماه - عدد صحیح</td><td>1-12</td><td>2</td></tr>
-                    <tr><td>s</td><td>ثانیه - دو رقمی</td><td>00-59</td><td>03</td></tr>
-                    <tr><td>t</td><td>تعداد روز های ماه</td><td>0-31</td><td>28</td></tr>
-                    <tr><td>u</td><td>میکروثانیه</td><td>000000</td><td>28</td></tr>
-                    <tr><td>v</td><td>سال به حروف - کوتاه</td><td>یک-نهصد و نود و نه</td><td>نود و هشت | چهارصد و دو</td></tr>
-                    <tr><td>w</td><td>روز هفته - عددی</td><td>0-6</td><td>6</td></tr>
-                    <tr><td>y</td><td>سال - عددی کوتاه</td><td>1-999</td><td>98 | 402</td></tr>
-                    <tr><td>A</td><td>زمان به صورت کامل</td><td>بعد از ظهر - قبل از ظهر</td><td>قبل از ظهر</td></tr>
-                    <tr><td>D</td><td>روز هفته - خلاصه</td><td>شن‍ - جم‍</td><td>سه</td></tr>
-                    <tr><td>F</td><td>ماه - کامل</td><td>فروردین - اسفند</td><td>اردیبهشت</td></tr>
-                    <tr><td>G</td><td>ساعت به صورت ۲۴ ساعته - عدد صحیح</td><td>0-24</td><td>3</td></tr>
-                    <tr><td>H</td><td>ساعت به صورت ۲۴ ساعته - دو رقمی</td><td>00-24</td><td>03</td></tr>
-                    <tr><td>J</td><td>روز به حروف</td><td>یک-سی و یک</td><td>سیزده</td></tr>
-                    <tr><td>L</td><td>سال کبیسه است یا خیر</td><td>0-1</td><td>1</td></tr>
-                    <tr><td>M</td><td>ماه - خلاصه</td><td>فر-اس‍</td><td>ار</td></tr>
-                    <tr><td>O</td><td>اختلاف ساعت گرینویچ</td><td>-1200 - +1400</td><td>+0330</td></tr>
-                    <tr><td>V</td><td>سال به حروف</td><td>صفر-...</td><td>یک هزار و سیصد و نود و هشت</td></tr>
-                    <tr><td>Y</td><td>سال</td><td>0-...</td><td>1398</td></tr>
+                    <tr><td>a</td><td>Before noon and afternoon</td><td>ق.ظ - ب.ظ</td><td>ق.ظ</td></tr>
+                    <tr><td>b</td><td>Numeric representation of a season, without leading zeros</td><td>0-3</td><td>1</td></tr>
+                    <tr><td>d</td><td>Day of the month, 2 digits with leading zeros</td><td>01-31</td><td>13</td></tr>
+                    <tr><td>f</td><td>Season name</td><td>بهار-زمستان</td><td>بهار</td></tr>
+                    <tr><td>g</td><td>12-hour format of an hour without leading zeros</td><td>0-12</td><td>11</td></tr>
+                    <tr><td>h</td><td>12-hour format of an hour with leading zeros</td><td>00-12</td><td>03</td></tr>
+                    <tr><td>i</td><td>Minutes with leading zeros</td><td>00-59</td><td>13</td></tr>
+                    <tr><td>j</td><td>Day of the month without leading zeros</td><td>1-31</td><td>4</td></tr>
+                    <tr><td>l</td><td>A full textual representation of the day of the week</td><td>شنبه-جمعه</td><td>یکشنبه</td></tr>
+                    <tr><td>m</td><td>Numeric representation of a month, with leading zeros</td><td>01-12</td><td>02</td></tr>
+                    <tr><td>n</td><td>Numeric representation of a month, without leading zeros</td><td>1-12</td><td>2</td></tr>
+                    <tr><td>s</td><td>Seconds, with leading zeros</td><td>00-59</td><td>03</td></tr>
+                    <tr><td>t</td><td>Number of days in the given month</td><td>0-31</td><td>28</td></tr>
+                    <tr><td>u</td><td>Millisecond</td><td>000000</td><td>28</td></tr>
+                    <tr><td>v</td><td>Short year display in letters</td><td>یک-نهصد و نود و نه</td><td>نود و هشت | چهارصد و دو</td></tr>
+                    <tr><td>w</td><td>Numeric representation of the day of the week</td><td>0-6</td><td>6</td></tr>
+                    <tr><td>y</td><td>A two or three digit representation of a year</td><td>1-999</td><td>98 | 402</td></tr>
+                    <tr><td>A</td><td>Before noon and afternoon</td><td>بعد از ظهر - قبل از ظهر</td><td>قبل از ظهر</td></tr>
+                    <tr><td>D</td><td>Persian ordinal suffix for the day of the month, 2 characters</td><td>شن‍ - جم‍</td><td>سه</td></tr>
+                    <tr><td>F</td><td>A full textual representation of a month</td><td>فروردین - اسفند</td><td>اردیبهشت</td></tr>
+                    <tr><td>G</td><td>24-hour format of an hour without leading zeros</td><td>0-24</td><td>3</td></tr>
+                    <tr><td>H</td><td>24-hour format of an hour with leading zeros</td><td>00-24</td><td>03</td></tr>
+                    <tr><td>J</td><td>Day of the month</td><td>یک-سی و یک</td><td>سیزده</td></tr>
+                    <tr><td>L</td><td>Whether it’s a leap year</td><td>0-1</td><td>1</td></tr>
+                    <tr><td>M</td><td>A short textual representation of a month, two letters</td><td>فر-اس‍</td><td>ار</td></tr>
+                    <tr><td>O</td><td>Difference to Greenwich time (GMT) in hours</td><td>-1200 - +1400</td><td>+0330</td></tr>
+                    <tr><td>V</td><td>Full year display in letters</td><td>صفر-...</td><td>یک هزار و سیصد و نود و هشت</td></tr>
+                    <tr><td>Y</td><td>A full numeric representation of a year, 4 digits</td><td>0-...</td><td>1398</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>JDate.parse(...)</h2>
+                <p>You can parse <strong>specified shamsi or gregorian date </strong> from valid date string to convert it to milliseconds.</p>
+            </div>
+
+            <div class="col-md-6">
+                <pre>
+                    <code class="language-js">
+                        JDate.parse("1399");
+                        JDate.parse("1399/02");
+                        JDate.parse("1399/02/13");
+                        JDate.parse("1399/02/13 03:14:30");
+                        JDate.parse("2019/05/03 01:02:03");
+                    </code>
+                </pre>
+            </div>
+            <div class="col-md-6">
+                <div id="example-7" class="example-result"></div>
+                <script>
+                    document.getElementById("example-7").innerHTML += JDate.parse("1399") + " ~~>  " + new JDate( JDate.parse("1399") ).echo("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += JDate.parse("1399/02") + " ~~>  " + new JDate( JDate.parse("1399/02") ).echo("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += JDate.parse("1399/02/13") + " ~~>  " + new JDate( JDate.parse("1399/02/13") ).echo("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += JDate.parse("1399/02/13 03:14:30") + " ~~>  " + new JDate( JDate.parse("1399/02/13 03:14:30") ).echo("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += JDate.parse("2019/05/03 01:02:03") + " ~~>  " + new JDate( JDate.parse("2019/05/03 01:02:03") ).echo("Y/m/d - H:i:s") + "<br>";
+                </script>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Get JDate Methods</h2>
+                <p>These methods can be used for getting information from a jalali date object:</p>
+            </div>
+
+            <div class="col-md-12 table-responsive">
+                <table class="table table-bordered table-striped table-sm table-hover">
+                    <thead>
+                    <tr>
+                        <td>Method</td>
+                        <td>Description</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>getDate()</td><td>Get the day as a number (1-31)</td></tr>
+                    <tr><td>getDay()</td><td>Get the weekday as a number (0-6)</td></tr>
+                    <tr><td>getFullYear()</td><td>Get the year as a four digit number (yyyy)</td></tr>
+                    <tr><td>getShortYear()</td><td>Get the year as a two or three digit number (yy | yyy)</td></tr>
+                    <tr><td>getHours()</td><td>Get the hour (0-23)</td></tr>
+                    <tr><td>getMilliseconds()</td><td>Get the millisecond (0-999)</td></tr>
+                    <tr><td>getMinutes()</td><td>Get the minute (0-59)</td></tr>
+                    <tr><td>getMonth()</td><td>Get the month as a number (0-11)</td></tr>
+                    <tr><td>getSeconds()</td><td>Get the second (0-59)</td></tr>
+                    <tr><td>getTime()</td><td>Get the time (milliseconds)</td></tr>
+                    <tr><td>getTimezone()</td><td>Difference to Greenwich time (GMT) in hours</td></tr>
+                    <tr><td>getTimezoneOffset()</td><td>Difference between UTC and Local Time</td></tr>
+                    <tr><td>isLeapYear()</td><td>Whether it’s a leap year (0-1)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Set JDate Methods</h2>
+                <p>These methods can be used for set date values (years, months, days, hours, minutes, seconds, milliseconds) for a jalali date object:</p>
+            </div>
+
+            <div class="col-md-12 table-responsive">
+                <table class="table table-bordered table-striped table-sm table-hover">
+                    <thead>
+                    <tr>
+                        <td>Method</td>
+                        <td>Description</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>setDate(date)</td><td>Set the day as a number (1-31)</td></tr>
+                    <tr><td>setMonth(month, date)</td><td>Set the month (0-11)</td></tr>
+                    <tr><td>setFullYear(year, month, date)</td><td>Set the year (optionally month and day)</td></tr>
+                    <tr><td>setHours(hours, min, sec, ms)</td><td>Set the hour (0-23)</td></tr>
+                    <tr><td>setMilliseconds(ms)</td><td>Set the milliseconds (0-999)</td></tr>
+                    <tr><td>setMinutes(min, sec, ms)</td><td>Set the minutes (0-59)</td></tr>
+                    <tr><td>setSeconds(sec, ms)</td><td>Set the seconds (0-59)</td></tr>
+                    <tr><td>setTime(ms)</td><td>Set the time (milliseconds)</td></tr>
                     </tbody>
                 </table>
             </div>
