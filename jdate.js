@@ -9,25 +9,36 @@
 
 function JDate(year, month, date, hours, minutes, seconds, milliseconds) {
     'use strict';
-    this.gregorian = 0;
     this.jalali = 0;
-    if( arguments.length === 0 ) {
-        this.gregorian = new Date();
-    }else if( arguments.length === 1 ){
-        var ts = JDate.parse(arguments[0]);
-        if ( ts > 0 ){
-            this.gregorian = new Date(ts);
-        }else{
-            throw 'Cannot parse date string';
+    this.gregorian = new Date();
+    if( arguments.length !== 0 ) {
+        if (arguments.length === 1) {
+            if( typeof arguments[0] === "number" && arguments[0].toString().length > 4 ){
+                this.gregorian = new Date(arguments[0]);
+            }else{
+                var ts = Date.parse(arguments[0]);
+                if (ts > 0) {
+                    this.gregorian = new Date(arguments[0], 0);
+                } else if (ts < 0) {
+                    this.gregorian = new Date(JDate.parse(arguments[0]));
+                } else {
+                    throw 'Cannot parse date string';
+                }
+            }
+
+        } else {
+            date = date || 1;
+            if (new Date(year, month, date).getTime() > 0) {
+                var gd = {year: year, month: month, date: date};
+            } else {
+                var gd = jalali_to_gregorian(year, month, date);
+            }
+            hours = hours || 0;
+            minutes = minutes || 0;
+            seconds = seconds || 0;
+            milliseconds = milliseconds || 0;
+            this.gregorian = new Date(gd.year, gd.month, gd.date, hours, minutes, seconds, milliseconds);
         }
-    }else{
-        date = date || 1;
-        if( new Date(year, month, date).getTime() > 0 ){
-            var gd = {year: year,month: month,date: date};
-        }else{
-            var gd = jalali_to_gregorian(year, month, date);
-        }
-        this.gregorian = new Date(gd.year, gd.month, gd.date, hours, minutes, seconds, milliseconds);
     }
     this.setJalali();
 }
@@ -70,7 +81,7 @@ JDate.prototype = {
         return this.gregorian.getTimezoneOffset();
     },
     isLeapYear: function(){
-        return (this.jalali.year%33%4-1==parseInt(this.jalali.year%33*.05))?1:0;
+        return JDate.isLeapYear(this.jalali.year);
     },
 
     setDate: function(date){
@@ -154,6 +165,11 @@ JDate.prototype = {
         }else{
             return this.gregorian.setSeconds(sec);
         }
+    },
+    setTime: function(ms){
+        var ts = this.gregorian.setTime(ms);
+        this.setJalali();
+        return ts;
     },
     echo: function (format) {
         var
@@ -241,6 +257,11 @@ JDate.parse = function (string) {
 
 JDate.now = function () {
     Date.now();
+};
+
+JDate.isLeapYear = function (year) {
+    year = parseInt(year);
+    return (year%33%4-1==parseInt(year%33*.05))?1:0;
 };
 
 var
