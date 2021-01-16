@@ -1,7 +1,7 @@
 /**
  * @preserve JDate: creates a new jalali date object with the current date and time.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author Reza Moghaddam
  * @copyright The Financial Times Limited [All Rights Reserved]
  * @license MIT License https://opensource.org/licenses/MIT
