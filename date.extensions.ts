@@ -6,8 +6,8 @@
  */
 
 interface Date {
-    echo(format : string) : string;
-    echoFa(format : string) : string;
+    echo(format? : string) : string;
+    echoFa(format? : string) : string;
     jalali: {year:number, month:number, date:number};
     isLeapYear(year:number) : number;
     isJalaliLeapYear() : number;
