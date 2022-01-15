@@ -21,7 +21,7 @@
     <meta name="msapplication-config" content="https://getbootstrap.com/docs/4.4/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
 
-    <script src="../jdate.js"></script>
+    <script src="../dist/date.extensions.js"></script>
 
     <style>
         .bd-placeholder-img {
@@ -108,128 +108,28 @@
         <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-12">
-                <h2>new JDate()</h2>
-                <p>new JDate() creates a new jalali date object with the <strong>current date and time</strong>:</p>
+                <h2>new Date()</h2>
+                <p>Now with <u>new Date()</u> creates a new gregorian and <strong>jalali</strong> date object with the <strong>current date and time</strong>:</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <pre>
                     <code class="language-js">
-                        var jd = new JDate();
-                        document.getElementById("example-1").innerHTML = jd;
+                        var date = new Date();
+                        console.log( date.echoFa() );
+                        console.log( date.echo() );
+                        console.log( date );
                     </code>
                 </pre>
+            </div>
+            <div class="col-md-12">
                 <div id="example-1" class="example-result"></div>
-                <script>
-                    var jd = new JDate();
-                    document.getElementById("example-1").innerHTML = jd;
-                </script>
             </div>
-
-            <div class="col-md-6">
-                <pre>
-                    <code class="language-js">
-                        var gd = new Date();
-                        document.getElementById("example-2").innerHTML = gd;
-                    </code>
-                </pre>
-                <div id="example-2" class="example-result"></div>
-                <script>
-                    var gd = new Date();
-                    document.getElementById("example-2").innerHTML = gd;
-                </script>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h2>new JDate(year, month, ...)</h2>
-                <p><span style="color: #ff653f">new JDate(year, month, ...)</span> creates a new jalali date object with a <strong>specified date and time</strong>.<br>
-                7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):</p>
-            </div>
-            <div class="col-md-6">
-                <pre>
-                    <code class="language-js">
-                        new JDate()
-                        new JDate(2019)
-                        new JDate(2019, 4)
-                        new JDate(2019, 4, 3)
-                        new JDate(2019, 4, 3, 10)
-                        new JDate(2019, 4, 3, 10, 33)
-                        new JDate(2019, 4, 3, 10, 33, 30)
-                    </code>
-                </pre>
-                <div id="example-3" class="example-result"></div>
-                <script>
-                    document.getElementById("example-3").innerHTML += new JDate() + "<br>";
-                    document.getElementById("example-3").innerHTML += new JDate(2019) + "<br>";
-                    document.getElementById("example-3").innerHTML += new JDate(2019, 4) + "<br>";
-                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3) + "<br>";
-                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3, 10) + "<br>";
-                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3, 10, 33) + "<br>";
-                    document.getElementById("example-3").innerHTML += new JDate(2019, 4, 3, 10, 33, 30) + "<br>";
-                </script>
-            </div>
-
-            <div class="col-md-6">
-                <pre>
-                    <code class="language-js">
-                        new Date()
-                        new Date(2019)
-                        new Date(2019, 4)
-                        new Date(2019, 4, 3)
-                        new Date(2019, 4, 3, 10)
-                        new Date(2019, 4, 3, 10, 33)
-                        new Date(2019, 4, 3, 10, 33, 30)
-                    </code>
-                </pre>
-                <div id="example-4" class="example-result"></div>
-                <script>
-                    document.getElementById("example-4").innerHTML += new Date() + "<br>";
-                    document.getElementById("example-4").innerHTML += new Date(2019) + "<br>";
-                    document.getElementById("example-4").innerHTML += new Date(2019, 4) + "<br>";
-                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3) + "<br>";
-                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3, 10) + "<br>";
-                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3, 10, 33) + "<br>";
-                    document.getElementById("example-4").innerHTML += new Date(2019, 4, 3, 10, 33, 30) + "<br>";
-                </script>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h2>new JDate(year, month, ...) with shamsi date parameters</h2>
-                <p>You can creates a new jalali date object with a <strong>specified shamsi date and time</strong>.</p>
-            </div>
-
-            <div class="col-md-6">
-                <pre>
-                    <code class="language-js">
-                        new JDate()
-                        new JDate(1398)
-                        new JDate(1398, 1)
-                        new JDate(1398, 1, 13)
-                        new JDate(1398, 1, 13, 3)
-                        new JDate(1398, 1, 13, 3, 14)
-                        new JDate(1398, 1, 13, 3, 14, 30)
-                    </code>
-                </pre>
-            </div>
-            <div class="col-md-6">
-                <div id="example-5" class="example-result"></div>
-                <script>
-                    document.getElementById("example-5").innerHTML += new JDate() + "<br>";
-                    document.getElementById("example-5").innerHTML += new JDate(1398) + "<br>";
-                    document.getElementById("example-5").innerHTML += new JDate(1398, 1) + "<br>";
-                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13) + "<br>";
-                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13, 3) + "<br>";
-                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13, 3, 14) + "<br>";
-                    document.getElementById("example-5").innerHTML += new JDate(1398, 1, 13, 3, 14, 30) + "<br>";
-                </script>
-            </div>
+            <script>
+                var date = new Date();
+                document.getElementById("example-1").innerHTML = date.echoFa();
+                document.getElementById("example-1").innerHTML += '<br>' + date.echo();
+                document.getElementById("example-1").innerHTML += '<br>' + date;
+            </script>
         </div>
 
         <hr>
@@ -242,14 +142,16 @@
             <div class="col-md-12">
                 <pre>
                     <code class="language-js">
-                        var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
-                        document.getElementById("example-5").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
+                        var date = new Date(2019, 4, 3, 10, 33, 30, 0);
+                        console.log( date.echoFa("l، j F Y - H:i:s") );
+                        console.log( date.echo("l، j F Y - H:i:s") );
                     </code>
                 </pre>
-                <div id="example-6" class="example-result" style="direction: rtl; text-align: right"></div>
+                <div id="example-6" class="example-result text-left" style="direction: rtl; text-align: right"></div>
                 <script>
-                    var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
-                    document.getElementById("example-6").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
+                    var date = new Date(2019, 4, 3, 10, 33, 30, 0);
+                    document.getElementById("example-6").innerHTML = date.echoFa("l، j F Y - H:i:s");
+                    document.getElementById("example-6").innerHTML += "<br>" + date.echo("l، j F Y - H:i:s");
                 </script>
             </div>
 
@@ -313,17 +215,21 @@
                         JDate.parse("1399/02/13");
                         JDate.parse("1399/02/13 03:14:30");
                         JDate.parse("2019/05/03 01:02:03");
+                        new Date(
+                        &nbsp;&nbsp;Date.parseJalali("1993/05/03 03:01:03")
+                        ).echoFa("Y/m/d - H:i:s")
                     </code>
                 </pre>
             </div>
             <div class="col-md-6">
                 <div id="example-7" class="example-result"></div>
                 <script>
-                    document.getElementById("example-7").innerHTML += JDate.parse("1399") + " ~~>  " + new JDate( JDate.parse("1399") ).echo("Y/m/d - H:i:s") + "<br>";
-                    document.getElementById("example-7").innerHTML += JDate.parse("1399/02") + " ~~>  " + new JDate( JDate.parse("1399/02") ).echo("Y/m/d - H:i:s") + "<br>";
-                    document.getElementById("example-7").innerHTML += JDate.parse("1399/02/13") + " ~~>  " + new JDate( JDate.parse("1399/02/13") ).echo("Y/m/d - H:i:s") + "<br>";
-                    document.getElementById("example-7").innerHTML += JDate.parse("1399/02/13 03:14:30") + " ~~>  " + new JDate( JDate.parse("1399/02/13 03:14:30") ).echo("Y/m/d - H:i:s") + "<br>";
-                    document.getElementById("example-7").innerHTML += JDate.parse("2019/05/03 01:02:03") + " ~~>  " + new JDate( JDate.parse("2019/05/03 01:02:03") ).echo("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += Date.parseJalali("1399") + " ~~>  " + new Date( Date.parseJalali("1399") ).echoFa("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += Date.parseJalali("1399/02") + " ~~>  " + new Date( Date.parseJalali("1399/02") ).echoFa("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += Date.parseJalali("1399/02/13") + " ~~>  " + new Date( Date.parseJalali("1399/02/13") ).echoFa("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += Date.parseJalali("1399/02/13 03:14:30") + " ~~>  " + new Date( Date.parseJalali("1399/02/13 03:14:30") ).echoFa("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += Date.parseJalali("2019/05/03 01:02:03") + " ~~>  " + new Date( Date.parseJalali("2019/05/03 01:02:03") ).echoFa("Y/m/d - H:i:s") + "<br>";
+                    document.getElementById("example-7").innerHTML += new Date( Date.parseJalali("1993/05/03 03:01:03") ).echoFa("Y/m/d - H:i:s") + "<br><br>";
                 </script>
             </div>
         </div>
@@ -332,8 +238,8 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2>Get JDate Methods</h2>
-                <p>These methods can be used for getting information from a jalali date object:</p>
+                <h2>Get Jalali Date Methods</h2>
+                <p>These methods can be used for getting information from a date object as a jalali date:</p>
             </div>
 
             <div class="col-md-12 table-responsive">
@@ -345,19 +251,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr><td>getDate()</td><td>Get the day as a number (1-31)</td></tr>
-                    <tr><td>getDay()</td><td>Get the weekday as a number (0-6)</td></tr>
-                    <tr><td>getFullYear()</td><td>Get the year as a four digit number (yyyy)</td></tr>
-                    <tr><td>getShortYear()</td><td>Get the year as a two or three digit number (yy | yyy)</td></tr>
+                    <tr><td>getJalaliDate()</td><td>Get the day as a number (1-31)</td></tr>
+                    <tr><td>getJalaliDay()</td><td>Get the weekday as a number (0-6)</td></tr>
+                    <tr><td>getJalaliFullYear()</td><td>Get the year as a four digit number (yyyy)</td></tr>
+                    <tr><td>getJalaliShortYear()</td><td>Get the year as a two or three digit number (yy | yyy)</td></tr>
                     <tr><td>getHours()</td><td>Get the hour (0-23)</td></tr>
                     <tr><td>getMilliseconds()</td><td>Get the millisecond (0-999)</td></tr>
                     <tr><td>getMinutes()</td><td>Get the minute (0-59)</td></tr>
-                    <tr><td>getMonth()</td><td>Get the month as a number (0-11)</td></tr>
+                    <tr><td>getJalaliMonth()</td><td>Get the month as a number (0-11)</td></tr>
                     <tr><td>getSeconds()</td><td>Get the second (0-59)</td></tr>
                     <tr><td>getTime()</td><td>Get the time (milliseconds)</td></tr>
                     <tr><td>getTimezone()</td><td>Difference to Greenwich time (GMT) in hours</td></tr>
                     <tr><td>getTimezoneOffset()</td><td>Difference between UTC and Local Time</td></tr>
-                    <tr><td>isLeapYear()</td><td>Whether it’s a leap year (0-1)</td></tr>
+                    <tr><td>isJalaliLeapYear()</td><td>Whether it’s a leap year (0-1)</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -367,8 +273,8 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2>Set JDate Methods</h2>
-                <p>These methods can be used for set date values (years, months, days, hours, minutes, seconds, milliseconds) for a jalali date object:</p>
+                <h2>Set Jalali Date Methods</h2>
+                <p>These methods can be used for set jalali date values (years, months, days, hours, minutes, seconds, milliseconds) for a date object:</p>
             </div>
 
             <div class="col-md-12 table-responsive">
@@ -380,9 +286,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr><td>setDate(date)</td><td>Set the day as a number (1-31)</td></tr>
-                    <tr><td>setMonth(month, date)</td><td>Set the month (0-11)</td></tr>
-                    <tr><td>setFullYear(year, month, date)</td><td>Set the year (optionally month and day)</td></tr>
+                    <tr><td>setJalali(year, [month, date, hours, minutes, seconds])</td><td>Set jalali date</td></tr>
+<!--                    <tr><td>setDate(date)</td><td>Set the day as a number (1-31)</td></tr>-->
+<!--                    <tr><td>setMonth(month, date)</td><td>Set the month (0-11)</td></tr>-->
+<!--                    <tr><td>setFullYear(year, month, date)</td><td>Set the year (optionally month and day)</td></tr>-->
                     <tr><td>setHours(hours, min, sec, ms)</td><td>Set the hour (0-23)</td></tr>
                     <tr><td>setMilliseconds(ms)</td><td>Set the milliseconds (0-999)</td></tr>
                     <tr><td>setMinutes(min, sec, ms)</td><td>Set the minutes (0-59)</td></tr>

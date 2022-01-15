@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/date.extensions.min.js" />
+        <item url="file://$PROJECT_DIR$/dist/examples/example.min.js" />
+        <item url="file://$PROJECT_DIR$/jdate-builtin.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/date.extensions.min.js" />
+      <root url="file://$PROJECT_DIR$/dist/examples/example.min.js" />
+      <root url="file://$PROJECT_DIR$/jdate-builtin.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
