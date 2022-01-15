@@ -18,7 +18,7 @@ interface Date {
     getJalaliMonth() : number;
     getJalaliFullYear() : number;
     jalaliSync() : void;
-    setJalali(year:number, month:number, date:number, hours:number, minutes:number, seconds:number) : Date | number;
+    setJalali(year:number, month?:number, date?:number, hours?:number, minutes?:number, seconds?:number) : Date | number;
 }
 interface DateConstructor {
     isLeapYear(year:number) : number;
@@ -204,7 +204,7 @@ Date.prototype.setJalali = function(year, month, date, hours, minutes, seconds){
     if( arguments.length > 0 ){
         let gd;
         if( arguments.length == 3 ){
-            gd = Date.jalaliToGregorian(year, month, date);
+            gd = Date.jalaliToGregorian(year, <number>month, <number>date);
             this.setFullYear(gd.year, gd.month, gd.date);
         }else{
             month = month || 0;
@@ -213,11 +213,11 @@ Date.prototype.setJalali = function(year, month, date, hours, minutes, seconds){
             minutes = minutes || 0;
             seconds = seconds || 0;
             gd = Date.jalaliToGregorian(year, month, date);
-            const ts = Date.parse(`${gd.year}/${gd.month}/${gd.date} ${hours}:${minutes}:${seconds}`);
+            const ts = Date.parse(`${gd.year}/${gd.month+1}/${gd.date} ${hours}:${minutes}:${seconds}`);
             this.setTime(ts);
         }
 
-        this.jalali = {year, month, date};
+        this.jalali = {year, month: <number>month, date: <number>date};
         return this;
     }else{
         return NaN;

@@ -1,6 +1,6 @@
 <p align="center">
     <img src="https://github.com/moghaddam24/JDate.js/blob/master/examples/logo.png?raw=true"><br/>
-    Simple yet flexible JavaScript jalali date and time for developers
+    Simple yet flexible Typescript | Javascript jalali date and time for developers
 </p>
 <p align="center">
     <a href="https://github.com/moghaddam24/JDate.js"><img src="https://img.shields.io/github/v/release/moghaddam24/JDate.js" alt="Downloads"></a>
@@ -9,48 +9,30 @@
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/moghaddam24/JDate.js" alt="Licence"></a>
 </p>
 
-# Javascript JDate Class ;)
+# Typescript | Javascript JDate Class ;)
 
-## new JDate()
+## new Date()
 
-new JDate() creates a new jalali date object with the current date and time:
+Now with new Date() creates a new gregorian and jalali date object with the current date and time:
 
-    var jd = new JDate();
-    document.getElementById("example-1").innerHTML = jd;
+    var date = new Date();
+    console.log( date.echoFa() );
+    console.log( date.echo() );
+    console.log( date );
     
-    ~~>    پنج‌شنبه، 15 اسفند 1398 ساعت 20:44:58
+    ~~>    شنبه، 25 دی 1400 - 19:22:22
+    ~~>    Saturday January 15 2022 - 19:22:22
+    ~~>    Sat Jan 15 2022 19:22:22 GMT+0330 (Iran Standard Time)
     
-## new JDate(year, month, ...)
 
-new JDate(year, month, ...) creates a new jalali date object with a specified date and time.
-7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):
+## new Date(...).echo | echoFa
 
-    new JDate()                         ~~> پنج‌شنبه، 15 اسفند 1398 ساعت 20:44:58
-    new JDate(2019)                     ~~> سه‌شنبه، 11 دی 1397 ساعت 00:00:00
-    new JDate(2019, 4)                  ~~> چهارشنبه، 11 اردیبهشت 1398 ساعت 00:00:00
-    new JDate(2019, 4, 3)               ~~> جمعه، 13 اردیبهشت 1398 ساعت 00:00:00
-    new JDate(2019, 4, 3, 10)           ~~> جمعه، 13 اردیبهشت 1398 ساعت 10:00:00
-    new JDate(2019, 4, 3, 10, 33)       ~~> جمعه، 13 اردیبهشت 1398 ساعت 10:33:00
-    new JDate(2019, 4, 3, 10, 33, 30)   ~~> جمعه، 13 اردیبهشت 1398 ساعت 10:33:30
-
-## new JDate(year, month, ...) with shamsi date parameters
-
-You can creates a new jalali date object with a specified shamsi date and time.
-
-    new JDate()                         ~~> پنج‌شنبه، 15 اسفند 1398 ساعت 20:44:58
-    new JDate(1398)                     ~~> پنج‌شنبه، 01 فروردین 1398 ساعت 00:00:00
-    new JDate(1398, 1)                  ~~> یکشنبه، 01 اردیبهشت 1398 ساعت 00:00:00
-    new JDate(1398, 1, 13)              ~~> جمعه، 13 اردیبهشت 1398 ساعت 00:00:00
-    new JDate(1398, 1, 13, 3)           ~~> جمعه، 13 اردیبهشت 1398 ساعت 03:00:00
-    new JDate(1398, 1, 13, 3, 14)       ~~> جمعه، 13 اردیبهشت 1398 ساعت 03:14:00
-    new JDate(1398, 1, 13, 3, 14, 30)   ~~> جمعه، 13 اردیبهشت 1398 ساعت 03:14:30
-
-## new JDate(...).echo
-
-    var jd = new JDate(2019, 4, 3, 10, 33, 30, 0);
-    document.getElementById("example-5").innerHTML = jd.echo("l، d F Y ساعت H:i:s");
+    var date = new Date(2019, 4, 3, 10, 33, 30, 0);
+    console.log( date.echoFa("l، j F Y - H:i:s") );
+    console.log( date.echo("l، j F Y - H:i:s") );
     
-    ~~>     جمعه، 13 اردیبهشت 1398 ساعت 10:33:30
+    ~~>     جمعه، 13 اردیبهشت 1398 - 10:33:30
+    ~~>     Friday، 3 May 2019 - 10:33:30
 
 <table width="100%">
     <thead>
@@ -94,20 +76,23 @@ You can creates a new jalali date object with a specified shamsi date and time.
 </table>
 
 
-## JDate.parse(...)
+## Date.parseJalali(...)
 
 You can parse specified shamsi or gregorian date from valid date string to convert it to milliseconds.
 
-    JDate.parse("1399");                    ~~> 1584649800000 ~~> 1399/01/01 - 00:00:00
-    JDate.parse("1399/02");                 ~~> 1587324600000 ~~> 1399/02/01 - 00:00:00
-    JDate.parse("1399/02/13");              ~~> 1588361400000 ~~> 1399/02/13 - 00:00:00
-    JDate.parse("1399/02/13 03:14:30");     ~~> 1588373070000 ~~> 1399/02/13 - 03:14:30
-    JDate.parse("2019/05/03 01:02:03");     ~~> 1556829123000 ~~> 1398/02/13 - 01:02:03
+    Date.parseJalali("1399");                    ~~> 1584662400000 ~~> 1399/01/01 - 03:30:00
+    Date.parseJalali("1399/02");                 ~~> 1587324600000 ~~> 1399/02/01 - 00:00:00
+    Date.parseJalali("1399/02/13");              ~~> 1588361400000 ~~> 1399/02/13 - 00:00:00
+    Date.parseJalali("1399/02/13 03:14:30");     ~~> 1588373070000 ~~> 1399/02/13 - 03:14:30
+    Date.parseJalali("2019/05/03 01:02:03");     ~~> 1556829123000 ~~> 1398/02/13 - 01:02:03
+    new Date(
+        Date.parseJalali("1993/05/03 03:01:03")
+    ).echoFa("Y/m/d - H:i:s")                   ~~> 1372/02/13 - 03:01:03
 
 
-## Get JDate Methods
+## Get Jalali Date Methods
 
-These methods can be used for getting information from a jalali date object:
+These methods can be used for getting information from a date object as a jalali date:
 <table width="100%">
     <thead>
     <tr>
@@ -116,25 +101,25 @@ These methods can be used for getting information from a jalali date object:
     </tr>
     </thead>
     <tbody>
-    <tr><td>getDate()</td><td>Get the day as a number (1-31)</td></tr>
-    <tr><td>getDay()</td><td>Get the weekday as a number (0-6)</td></tr>
-    <tr><td>getFullYear()</td><td>Get the year as a four digit number (yyyy)</td></tr>
-    <tr><td>getShortYear()</td><td>Get the year as a two or three digit number (yy | yyy)</td></tr>
+    <tr><td>getJalaliDate()</td><td>Get the day as a number (1-31)</td></tr>
+    <tr><td>getJalaliDay()</td><td>Get the weekday as a number (0-6)</td></tr>
+    <tr><td>getJalaliFullYear()</td><td>Get the year as a four digit number (yyyy)</td></tr>
+    <tr><td>getJalaliShortYear()</td><td>Get the year as a two or three digit number (yy | yyy)</td></tr>
     <tr><td>getHours()</td><td>Get the hour (0-23)</td></tr>
     <tr><td>getMilliseconds()</td><td>Get the millisecond (0-999)</td></tr>
     <tr><td>getMinutes()</td><td>Get the minute (0-59)</td></tr>
-    <tr><td>getMonth()</td><td>Get the month as a number (0-11)</td></tr>
+    <tr><td>getJalaliMonth()</td><td>Get the month as a number (0-11)</td></tr>
     <tr><td>getSeconds()</td><td>Get the second (0-59)</td></tr>
     <tr><td>getTime()</td><td>Get the time (milliseconds)</td></tr>
     <tr><td>getTimezone()</td><td>Difference to Greenwich time (GMT) in hours</td></tr>
     <tr><td>getTimezoneOffset()</td><td>Difference between UTC and Local Time</td></tr>
-    <tr><td>isLeapYear()</td><td>Whether it’s a leap year (0-1)</td></tr>
+    <tr><td>isJalaliLeapYear()</td><td>Whether it’s a leap year (0-1)</td></tr>
     </tbody>
 </table>
 
-## Set JDate Methods
+## Set Jalali Date Methods
 
-These methods can be used for set date values (years, months, days, hours, minutes, seconds, milliseconds) for a jalali date object:
+These methods can be used for set jalali date values (years, months, days, hours, minutes, seconds, milliseconds) for a date object:
 
 <table width="100%">
     <thead>
@@ -144,9 +129,7 @@ These methods can be used for set date values (years, months, days, hours, minut
     </tr>
     </thead>
     <tbody>
-    <tr><td>setDate(date)</td><td>Set the day as a number (1-31)</td></tr>
-    <tr><td>setMonth(month, date)</td><td>Set the month (0-11)</td></tr>
-    <tr><td>setFullYear(year, month, date)</td><td>Set the year (optionally month and day)</td></tr>
+    <tr><td>setJalali(year, [month, date, hours, minutes, seconds])</td><td>Set jalali date</td></tr>
     <tr><td>setHours(hours, min, sec, ms)</td><td>Set the hour (0-23)</td></tr>
     <tr><td>setMilliseconds(ms)</td><td>Set the milliseconds (0-999)</td></tr>
     <tr><td>setMinutes(min, sec, ms)</td><td>Set the minutes (0-59)</td></tr>

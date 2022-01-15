@@ -1,11 +1,11 @@
 import '../date.extensions';
 
-// let currentDate = new Date();
-// let birthday = new Date(Date.parseJalali("2012-2-27"));
-// console.log(`Current date: ${currentDate.echoFa("Y/m/d H:i:s")}`);
-// console.log(`birthday: ${birthday.echoFa("Y/m/d")}`);
-// console.log(`birthday to gregorian: ${birthday.echo("Y/m/d")}`);
+let currentDate = new Date();
+console.log(`Current date: ${currentDate.echoFa("Y/m/d H:i:s")}`);
 
-console.log(new Date(Date.parse("2022-01")).echo("v"));
-console.log(new Date(Date.parse("2022-01")).echo("J"));
-console.log(new Date(Date.parse("2022-01")).echo("V"));
+let birthday = new Date(Date.parseJalali("1372-2-13"));
+birthday.setJalali(1372,1, 13); // OR
+birthday.setFullYear(1993,4, 3); // OR
+
+console.log(`birthday: ${birthday.echoFa("Y/m/d")}`);
+console.log(`birthday to gregorian: ${birthday.echo("Y/m/d")}`);
