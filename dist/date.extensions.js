@@ -3,7 +3,7 @@
  * Jalali date for typescript | javascript
  *
  * @author Reza Moghaddam [moghaddam24.ir] @moghaddam24
- * @version 2.0
+ * @version 2.1.0
  */
 String.prototype.cut = function (left, right, withBoth) {
     if (withBoth === void 0) { withBoth = false; }
