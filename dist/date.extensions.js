@@ -1,4 +1,10 @@
 "use strict";
+/**
+ * Jalali date for typescript | javascript
+ *
+ * @author Reza Moghaddam [moghaddam24.ir] @moghaddam24
+ * @version 2.0
+ */
 String.prototype.cut = function (left, right, withBoth) {
     if (withBoth === void 0) { withBoth = false; }
     var str = this.slice(this.toLowerCase().indexOf(left.toString().toLowerCase())).substr(left.toString().length);
@@ -157,7 +163,7 @@ Date.prototype.setJalali = function (year, month, date, hours, minutes, seconds)
             minutes = minutes || 0;
             seconds = seconds || 0;
             gd = Date.jalaliToGregorian(year, month, date);
-            var ts = Date.parse(gd.year + "/" + gd.month + "/" + gd.date + " " + hours + ":" + minutes + ":" + seconds);
+            var ts = Date.parse(gd.year + "/" + (gd.month + 1) + "/" + gd.date + " " + hours + ":" + minutes + ":" + seconds);
             this.setTime(ts);
         }
         this.jalali = { year: year, month: month, date: date };
