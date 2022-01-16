@@ -1,6 +1,6 @@
 {
   "name": "jdate.js",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Simple yet flexible Typescript | Javascript jalali date and time for developers ...",
   "main": "dist/date.extensions.js",
   "types": "dist/date.extensions.d.ts",
