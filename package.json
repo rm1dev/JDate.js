@@ -1,0 +1,35 @@
+{
+  "name": "jdate.js",
+  "version": "2.0.0",
+  "description": "Simple yet flexible Typescript | Javascript jalali date and time for developers ...",
+  "main": "dist/date.extensions.js",
+  "types": "dist/date.extensions.d.ts",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moghaddam24/JDate.js.git"
+  },
+  "keywords": [
+    "jalali",
+    "date",
+    "jalali",
+    "moment",
+    "persian",
+    "date",
+    "persian",
+    "moment",
+    "jdate",
+    "jdate.js"
+  ],
+  "author": "Reza Moghaddam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moghaddam24/JDate.js/issues"
+  },
+  "homepage": "https://github.com/moghaddam24/JDate.js#readme"
+}
