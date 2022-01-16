@@ -11,6 +11,37 @@
 
 # Typescript | Javascript JDate Class ;)
 
+## Installation
+    npm i jdate.js
+
+## Usage
+### Typescript
+    import 'jdate.js';
+
+    let date = new Date();
+    
+    console.log("Normal format: " + date.echo("Y/m/d"));
+    console.log("Jalali format: " + date.echoFa("Y/m/d"));
+
+### ECMAScript
+    require('jdate.js');
+
+    let date = new Date();
+    
+    console.log("Normal format: " + date.echo("Y/m/d"));
+    console.log("Jalali format: " + date.echoFa("Y/m/d"));
+
+### Browser
+    <script src="https://cdn.jsdelivr.net/npm/jdate.js"></script>
+    <script type="text/javascript">
+      (function() {
+        var date = new Date();
+        console.log("Normal format: " + date.echo("Y/m/d"));
+        console.log("Jalali format: " + date.echoFa("Y/m/d"));
+      })();
+    </script>
+    
+
 ## new Date()
 
 Now with new Date() creates a new gregorian and jalali date object with the current date and time:
@@ -34,6 +65,7 @@ Now with new Date() creates a new gregorian and jalali date object with the curr
     ~~>     جمعه، 13 اردیبهشت 1398 - 10:33:30
     ~~>     Friday، 3 May 2019 - 10:33:30
 
+## Format guide
 <table width="100%">
     <thead>
     <tr>
