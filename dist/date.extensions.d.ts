@@ -1,8 +1,8 @@
 /**
  * Jalali date for typescript | javascript
  *
- * @author Reza Moghaddam [moghaddam24.ir] @moghaddam24
- * @version 2.1.5
+ * @author Reza Moghaddam [rm1.ir] @rm1dev
+ * @version 2.1.6
  */
 interface Date {
     echo(format?: string): string;
@@ -14,6 +14,7 @@ interface Date {
     };
     isLeapYear(year: number): number;
     isJalaliLeapYear(): number;
+    realWeekNumber(): number;
     getTimezone(): string;
     getJalaliShortYear(): number;
     getJalaliDay(): number;
@@ -26,6 +27,7 @@ interface Date {
 interface DateConstructor {
     isLeapYear(year: number): number;
     isJalaliLeapYear(year: number | string): number;
+    realWeekNumber(string: string | number): number;
     gregorianToJalali(gy: number, gm: number, gd: number): {
         year: number;
         month: number;
@@ -37,7 +39,6 @@ interface DateConstructor {
         date: number;
     };
     parseJalali(string: string): number;
-    realWeekNumber(string: string | number): number;
 }
 interface NumberConstructor {
     ziroPad(number: number): string;

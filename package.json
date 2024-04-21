@@ -1,6 +1,6 @@
 {
   "name": "jdate.js",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Simple yet flexible Typescript | Javascript jalali date and time for developers ...",
   "main": "dist/date.extensions.js",
   "types": "dist/date.extensions.d.ts",
@@ -31,5 +31,10 @@
   "bugs": {
     "url": "https://github.com/rm1dev/JDate.js/issues"
   },
-  "homepage": "https://github.com/rm1dev/JDate.js#readme"
+  "homepage": "https://github.com/rm1dev/JDate.js#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2"
+  }
 }

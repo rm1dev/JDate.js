@@ -2,8 +2,8 @@
 /**
  * Jalali date for typescript | javascript
  *
- * @author Reza Moghaddam [moghaddam24.ir] @moghaddam24
- * @version 2.1.5
+ * @author Reza Moghaddam [rm1.ir] @rm1dev
+ * @version 2.1.6
  */
 String.prototype.cut = function (left, right, withBoth) {
     if (withBoth === void 0) { withBoth = false; }
@@ -142,16 +142,16 @@ Date.parseJalali = function (string) {
         return gd.getTime();
     }
 };
-Date.realWeekNumber = function (week) {
-    week = parseInt(week);
-    return week == 6 ? 0 : week + 1;
-};
 Date.isLeapYear = function (year) {
     return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 1 : 0;
 };
 Date.isJalaliLeapYear = function (year) {
     var yn = typeof year == "number" ? year : parseInt(year);
     return (yn % 33 % 4 - 1 == Math.floor(yn % 33 * .05)) ? 1 : 0;
+};
+Date.realWeekNumber = function (weekNumber) {
+    weekNumber = parseInt(String(weekNumber));
+    return weekNumber == 6 ? 0 : weekNumber + 1;
 };
 Date.prototype.setJalali = function (year, month, date, hours, minutes, seconds) {
     if (arguments.length > 0) {
@@ -167,7 +167,7 @@ Date.prototype.setJalali = function (year, month, date, hours, minutes, seconds)
             minutes = minutes || 0;
             seconds = seconds || 0;
             gd = Date.jalaliToGregorian(year, month, date);
-            var ts = Date.parse(gd.year + "/" + (gd.month + 1) + "/" + gd.date + " " + hours + ":" + minutes + ":" + seconds);
+            var ts = Date.parse("".concat(gd.year, "/").concat(gd.month + 1, "/").concat(gd.date, " ").concat(hours, ":").concat(minutes, ":").concat(seconds));
             this.setTime(ts);
         }
         this.jalali = { year: year, month: month, date: date };
@@ -193,7 +193,7 @@ Date.prototype.getJalaliDate = function () {
     return this.jalali.date;
 };
 Date.prototype.getJalaliDay = function () {
-    return this.getDay;
+    return this.getDay() == 6 ? 0 : this.getDay() + 1;
 };
 Date.prototype.getJalaliShortYear = function () {
     var jy = this.getJalaliFullYear();
@@ -205,15 +205,15 @@ Date.prototype.getTimezone = function () {
 Date.prototype.isJalaliLeapYear = function () {
     return Date.isJalaliLeapYear(this.getJalaliFullYear());
 };
-Date.prototype.realWeekNumber = function () {
-    return Date.realWeekNumber(this.getDay());
-};
 Date.prototype.isLeapYear = function () {
     return Date.isLeapYear(this.getFullYear());
 };
+Date.prototype.realWeekNumber = function () {
+    return Date.realWeekNumber(this.getDay());
+};
 Date.prototype.echoFa = function (format) {
     this.jalaliSync();
-    var jy = this.jalali.year, jm = this.jalali.month, jd = this.jalali.date, jw = this.getJalaliDay(), leapYear = Date.isJalaliLeapYear(jy), jyShort = (jy >= 1300 && jy < 1400) ? parseInt(jy.toString().slice(2)) : parseInt(jy.toString().slice(1)), jtz = this.getTimezone();
+    var jy = this.jalali.year, jm = this.jalali.month, jd = this.jalali.date, jw = this.realWeekNumber(), leapYear = Date.isJalaliLeapYear(jy), jyShort = (jy >= 1300 && jy < 1400) ? parseInt(jy.toString().slice(2)) : parseInt(jy.toString().slice(1)), jtz = this.getTimezone();
     format = format || "l، j F Y - H:i:s";
     format = jdEncodeVars(format);
     format = format.replace(/{a}/g, (this.getHours() < 12) ? 'ق.ظ' : 'ب.ظ');
@@ -231,7 +231,7 @@ Date.prototype.echoFa = function (format) {
     format = format.replace(/{t}/g, String(((jm + 1) != 12) ? (31 - Math.trunc((jm + 1) / 6.5)) : (leapYear + 29)));
     format = format.replace(/{u}/g, String(this.getMilliseconds()));
     format = format.replace(/{v}/g, Number.toPersianWords(jyShort));
-    format = format.replace(/{w}/g, String(Date.realWeekNumber(jw)));
+    format = format.replace(/{w}/g, String(jw));
     format = format.replace(/{y}/g, String(jyShort));
     format = format.replace(/{A}/g, (this.getHours() < 12) ? 'قبل از ظهر' : 'بعد از ظهر');
     format = format.replace(/{D}/g, jalaliWeeks[jw].short);
@@ -243,14 +243,14 @@ Date.prototype.echoFa = function (format) {
     format = format.replace(/{M}/g, jalaliMonths[jm].short);
     format = format.replace(/{O}/g, jtz);
     format = format.replace(/{V}/g, Number.toPersianWords(jy));
-    format = format.replace(/{W}/g, String(jw));
+    format = format.replace(/{W}/g, String(this.getJalaliDay()));
     format = format.replace(/{Y}/g, String(jy));
     format = format.replace(/[{,}]/g, '');
     return format;
 };
 Date.prototype.echo = function (format) {
     this.jalaliSync();
-    var gy = this.getFullYear(), gm = this.getMonth(), gd = this.getDate(), gw = this.getDay(), leapYear = Date.isLeapYear(gy), gyShort = parseInt(gy.toString().slice(2)), gtz = this.getTimezone();
+    var gy = this.getFullYear(), gm = this.getMonth(), gd = this.getDate(), gw = this.realWeekNumber(), leapYear = Date.isLeapYear(gy), gyShort = parseInt(gy.toString().slice(2)), gtz = this.getTimezone();
     format = format || "l, F j, Y - H:i:s";
     format = jdEncodeVars(format);
     format = format.replace(/{a}/g, (this.getHours() < 12) ? 'AM' : 'PM');
@@ -268,7 +268,7 @@ Date.prototype.echo = function (format) {
     format = format.replace(/{t}/g, String(new Date(gy, gm + 1, 0).getDate()));
     format = format.replace(/{u}/g, String(this.getMilliseconds()));
     format = format.replace(/{v}/g, Number.toEnglishWords(gyShort));
-    format = format.replace(/{w}/g, String(Date.realWeekNumber(gw)));
+    format = format.replace(/{w}/g, String(gw));
     format = format.replace(/{y}/g, String(gyShort));
     format = format.replace(/{A}/g, (this.getHours() < 12) ? 'Before Noon' : 'After Noon');
     format = format.replace(/{D}/g, weekNames[gw].short);
@@ -280,7 +280,7 @@ Date.prototype.echo = function (format) {
     format = format.replace(/{M}/g, monthNames[gm].short);
     format = format.replace(/{O}/g, gtz);
     format = format.replace(/{V}/g, Number.toEnglishWords(gy));
-    format = format.replace(/{W}/g, String(gw));
+    format = format.replace(/{W}/g, String(this.getDay()));
     format = format.replace(/{Y}/g, String(gy));
     format = format.replace(/[{,}]/g, '');
     return format;
@@ -290,7 +290,7 @@ function jdEncodeVars(str) {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     for (var _i = 0, chars_1 = chars; _i < chars_1.length; _i++) {
         var ch = chars_1[_i];
-        str = str.replace(new RegExp(ch, 'g'), "{" + ch + "}");
+        str = str.replace(new RegExp(ch, 'g'), "{".concat(ch, "}"));
     }
     return str;
 }
@@ -384,10 +384,10 @@ Number.toPersianWords = function (number, counter) {
         if (number == 1) {
             return "اول";
         }
-        else if (("" + number).slice(-1) == "3" && number.toString().slice(-2) != 'ده') {
+        else if ("".concat(number).slice(-1) == "3" && number.toString().slice(-2) != 'ده') {
             return stotal.toString().slice(0, -1) + "وم";
         }
-        else if (("" + number).slice(-2) == "30") {
+        else if ("".concat(number).slice(-2) == "30") {
             return stotal + " ام";
         }
         else {

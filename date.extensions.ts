@@ -1,8 +1,8 @@
 /**
  * Jalali date for typescript | javascript
  *
- * @author Reza Moghaddam [moghaddam24.ir] @moghaddam24
- * @version 2.1.0
+ * @author Reza Moghaddam [rm1.ir] @rm1dev
+ * @version 2.1.6
  */
 
 interface Date {
@@ -11,6 +11,7 @@ interface Date {
     jalali: {year:number, month:number, date:number};
     isLeapYear(year:number) : number;
     isJalaliLeapYear() : number;
+    realWeekNumber(): number;
     getTimezone() : string;
     getJalaliShortYear() : number;
     getJalaliDay() : number;
@@ -23,6 +24,7 @@ interface Date {
 interface DateConstructor {
     isLeapYear(year:number) : number;
     isJalaliLeapYear(year:number | string) : number;
+    realWeekNumber(string: string | number): number;
     gregorianToJalali(gy: number, gm: number, gd: number) : {year:number, month:number, date:number};
     jalaliToGregorian(jy: number, jm: number, jd: number) : {year:number, month:number, date:number};
     parseJalali(string:string) : number;
@@ -199,6 +201,10 @@ Date.isJalaliLeapYear = function(year){
     let yn: number = typeof year == "number" ? year : parseInt(year);
     return (yn%33%4-1==Math.floor(yn%33*.05))?1:0;
 }
+Date.realWeekNumber = function (weekNumber) {
+    weekNumber = parseInt(String(weekNumber));
+    return weekNumber == 6 ? 0 : weekNumber + 1;
+};
 
 Date.prototype.setJalali = function(year, month, date, hours, minutes, seconds){
     if( arguments.length > 0 ){
@@ -254,13 +260,16 @@ Date.prototype.isJalaliLeapYear = function(){
 Date.prototype.isLeapYear = function(){
     return Date.isLeapYear(this.getFullYear());
 }
+Date.prototype.realWeekNumber = function () {
+    return Date.realWeekNumber(this.getDay());
+};
 Date.prototype.echoFa = function(format){
     this.jalaliSync();
     const
         jy = this.jalali.year,
         jm = this.jalali.month,
         jd = this.jalali.date,
-        jw = this.getJalaliDay(),
+        jw = this.realWeekNumber(),
         leapYear = Date.isJalaliLeapYear(jy),
         jyShort = (jy >= 1300 && jy < 1400) ? parseInt(jy.toString().slice(2)) : parseInt(jy.toString().slice(1)),
         jtz = this.getTimezone();
@@ -297,6 +306,7 @@ Date.prototype.echoFa = function(format){
     format = format.replace(/{O}/g, jtz);
 
     format = format.replace(/{V}/g, Number.toPersianWords(jy));
+    format = format.replace(/{W}/g, String(this.getJalaliDay()));
     format = format.replace(/{Y}/g, String(jy));
     format = format.replace(/[{,}]/g, '');
 
@@ -308,7 +318,7 @@ Date.prototype.echo = function(format){
         gy = this.getFullYear(),
         gm = this.getMonth(),
         gd = this.getDate(),
-        gw = this.getDay(),
+        gw = this.realWeekNumber(),
         leapYear = Date.isLeapYear(gy),
         gyShort = parseInt(gy.toString().slice(2)),
         gtz = this.getTimezone();
@@ -345,6 +355,7 @@ Date.prototype.echo = function(format){
     format = format.replace(/{O}/g, gtz);
 
     format = format.replace(/{V}/g, Number.toEnglishWords(gy));
+    format = format.replace(/{W}/g, String(this.getDay()));
     format = format.replace(/{Y}/g, String(gy));
     format = format.replace(/[{,}]/g, '');
 
