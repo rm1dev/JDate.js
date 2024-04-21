@@ -37,6 +37,7 @@ interface DateConstructor {
         date: number;
     };
     parseJalali(string: string): number;
+    realWeekNumber(string: string | number): number;
 }
 interface NumberConstructor {
     ziroPad(number: number): string;
