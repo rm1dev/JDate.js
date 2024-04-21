@@ -91,7 +91,8 @@ Now with new Date() creates a new gregorian and jalali date object with the curr
     <tr><td>t</td><td>Number of days in the given month</td><td>0-31</td><td>28</td></tr>
     <tr><td>u</td><td>Millisecond</td><td>000000</td><td>28</td></tr>
     <tr><td>v</td><td>Short year display in letters</td><td>یک-نهصد و نود و نه</td><td>نود و هشت | چهارصد و دو</td></tr>
-    <tr><td>w</td><td>Numeric representation of the day of the week</td><td>0-6</td><td>6</td></tr>
+    <tr><td>w</td><td>Numeric representation of the day of the week (First day of week is: 0)</td><td>0-6</td><td>6</td></tr>
+    <tr><td>W</td><td>Numeric representation of the day of the week (Javascript default, Like new Date().getDay())</td><td>1-0</td><td>6</td></tr>
     <tr><td>y</td><td>A two or three digit representation of a year</td><td>1-999</td><td>98 | 402</td></tr>
     <tr><td>A</td><td>Before noon and afternoon</td><td>بعد از ظهر - قبل از ظهر</td><td>قبل از ظهر</td></tr>
     <tr><td>D</td><td>Persian ordinal suffix for the day of the month, 2 characters</td><td>شن‍ - جم‍</td><td>سه</td></tr>
@@ -134,7 +135,7 @@ These methods can be used for getting information from a date object as a jalali
     </thead>
     <tbody>
     <tr><td>getJalaliDate()</td><td>Get the day as a number (1-31)</td></tr>
-    <tr><td>getJalaliDay()</td><td>Get the weekday as a number (0-6)</td></tr>
+    <tr><td>getJalaliDay()</td><td>Get the weekday as a number (sat:1, sun:2, ..., fri: 0)</td></tr>
     <tr><td>getJalaliFullYear()</td><td>Get the year as a four digit number (yyyy)</td></tr>
     <tr><td>getJalaliShortYear()</td><td>Get the year as a two or three digit number (yy | yyy)</td></tr>
     <tr><td>getHours()</td><td>Get the hour (0-23)</td></tr>

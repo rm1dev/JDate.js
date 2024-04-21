@@ -142,6 +142,10 @@ Date.parseJalali = function (string) {
         return gd.getTime();
     }
 };
+Date.realWeekNumber = function (week) {
+    week = parseInt(week);
+    return week == 6 ? 0 : week + 1;
+};
 Date.isLeapYear = function (year) {
     return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 1 : 0;
 };
@@ -189,7 +193,7 @@ Date.prototype.getJalaliDate = function () {
     return this.jalali.date;
 };
 Date.prototype.getJalaliDay = function () {
-    return this.getDay() == 6 ? 0 : this.getDay() + 1;
+    return this.getDay;
 };
 Date.prototype.getJalaliShortYear = function () {
     var jy = this.getJalaliFullYear();
@@ -200,6 +204,9 @@ Date.prototype.getTimezone = function () {
 };
 Date.prototype.isJalaliLeapYear = function () {
     return Date.isJalaliLeapYear(this.getJalaliFullYear());
+};
+Date.prototype.realWeekNumber = function () {
+    return Date.realWeekNumber(this.getDay());
 };
 Date.prototype.isLeapYear = function () {
     return Date.isLeapYear(this.getFullYear());
@@ -224,7 +231,7 @@ Date.prototype.echoFa = function (format) {
     format = format.replace(/{t}/g, String(((jm + 1) != 12) ? (31 - Math.trunc((jm + 1) / 6.5)) : (leapYear + 29)));
     format = format.replace(/{u}/g, String(this.getMilliseconds()));
     format = format.replace(/{v}/g, Number.toPersianWords(jyShort));
-    format = format.replace(/{w}/g, String(jw));
+    format = format.replace(/{w}/g, String(Date.realWeekNumber(jw)));
     format = format.replace(/{y}/g, String(jyShort));
     format = format.replace(/{A}/g, (this.getHours() < 12) ? 'قبل از ظهر' : 'بعد از ظهر');
     format = format.replace(/{D}/g, jalaliWeeks[jw].short);
@@ -236,6 +243,7 @@ Date.prototype.echoFa = function (format) {
     format = format.replace(/{M}/g, jalaliMonths[jm].short);
     format = format.replace(/{O}/g, jtz);
     format = format.replace(/{V}/g, Number.toPersianWords(jy));
+    format = format.replace(/{W}/g, String(jw));
     format = format.replace(/{Y}/g, String(jy));
     format = format.replace(/[{,}]/g, '');
     return format;
@@ -260,7 +268,7 @@ Date.prototype.echo = function (format) {
     format = format.replace(/{t}/g, String(new Date(gy, gm + 1, 0).getDate()));
     format = format.replace(/{u}/g, String(this.getMilliseconds()));
     format = format.replace(/{v}/g, Number.toEnglishWords(gyShort));
-    format = format.replace(/{w}/g, String(gw));
+    format = format.replace(/{w}/g, String(Date.realWeekNumber(gw)));
     format = format.replace(/{y}/g, String(gyShort));
     format = format.replace(/{A}/g, (this.getHours() < 12) ? 'Before Noon' : 'After Noon');
     format = format.replace(/{D}/g, weekNames[gw].short);
@@ -272,6 +280,7 @@ Date.prototype.echo = function (format) {
     format = format.replace(/{M}/g, monthNames[gm].short);
     format = format.replace(/{O}/g, gtz);
     format = format.replace(/{V}/g, Number.toEnglishWords(gy));
+    format = format.replace(/{W}/g, String(gw));
     format = format.replace(/{Y}/g, String(gy));
     format = format.replace(/[{,}]/g, '');
     return format;
